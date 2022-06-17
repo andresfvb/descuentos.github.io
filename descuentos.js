@@ -4,15 +4,34 @@ function calcularPrecioConDescuento(precio, descuento){
     return precioConDescuento
 }
 
+const cupones = [
+    "hoy_amor",
+    "hoy_amistad",
+    "colombia",
+];
 function calcularDescuento(){
     const price = document.getElementById("inputPrice");
     const priceValue = price.value;
 
-    const discount = document.getElementById("inputDiscount");
-    const discountValue = discount.value;
+    const inputCoupon = document.getElementById("inputCupon");
+    const couponValue = inputCoupon.value;
 
-    const precioConDescuento = calcularPrecioConDescuento(priceValue, discountValue);
+    let descuento;
 
+    switch (couponValue){
+        case cupones[0]:
+            descuento=15;
+        break;
+        case cupones[1]:
+            descuento = 20;
+        break;
+        case cupones[2]:
+            descuento = 30;
+        break;
+    }
+
+    const precioConDescuento = calcularPrecioConDescuento(priceValue, descuento);
     const resultP = document.getElementById("ResultP");
     resultP.innerText = "El precio con descuento son: $" + precioConDescuento;
 }
+
